@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Glassmorphism Kit Showcase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Core Design System */
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            --primary-gradient: linear-gradient(135deg, #FF6B6B, #556270);
+            --secondary-gradient: linear-gradient(135deg, #00C9FF, #92FE9D);
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f172a; /* Dark sleek background */
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Animated Background Orbs */
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            animation: float 10s infinite ease-in-out alternate;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 107, 107, 0.4);
+            top: -100px;
+            left: -100px;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: rgba(0, 201, 255, 0.3);
+            bottom: -150px;
+            right: -100px;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 50px) scale(1.1); }
+        }
+
+        /* Layout Container */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            width: 100%;
+            padding: 2rem;
+            z-index: 1;
+        }
+
+        /* Glass Card Component */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: var(--glass-shadow);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.4);
+        }
+
+        .glass-card h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Glass Button Component */
+        .glass-button {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            width: max-content;
+        }
+
+        .glass-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255,255,255,0.1);
+        }
+
+        .glass-button.primary {
+            background: var(--secondary-gradient);
+            color: #0f172a;
+            border: none;
+            font-weight: 600;
+        }
+
+        .glass-button.primary:hover {
+            box-shadow: 0 0 20px rgba(0, 201, 255, 0.4);
+        }
+
+        /* Glass Input Component */
+        .glass-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1rem;
+            color: var(--text-primary);
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .glass-input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-input:focus {
+            border-color: rgba(0, 201, 255, 0.5);
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Statistics specific layout */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .stat-box {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .stat-box h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--secondary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-box span {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Background Orbs -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <div class="container">
+        <!-- Interactive Card -->
+        <div class="glass-card">
+            <h2>Glassmorphism Kit</h2>
+            <p>Welcome to the ultra-premium React Glassmorphism component library. A set of highly polished, zero-dependency components for modern web applications.</p>
+            <div style="display: flex; gap: 1rem; margin-top: auto;">
+                <button class="glass-button primary">Get Started</button>
+                <button class="glass-button">View Docs</button>
+            </div>
+        </div>
+
+        <!-- Form Elements Card -->
+        <div class="glass-card">
+            <h2>Sign In</h2>
+            <p>Experience the seamless input interaction built with pure CSS and backdrop filters.</p>
+            <input type="text" class="glass-input" placeholder="Email Address">
+            <input type="password" class="glass-input" placeholder="Password">
+            <button class="glass-button" style="width: 100%;">Authenticate</button>
+        </div>
+
+        <!-- Statistics Card -->
+        <div class="glass-card">
+            <h2>System Analytics</h2>
+            <p>Live metrics rendered beautifully inside a translucent container.</p>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h3>99%</h3>
+                    <span>Uptime</span>
+                </div>
+                <div class="stat-box">
+                    <h3>1.2s</h3>
+                    <span>Latency</span>
+                </div>
+                <div class="stat-box">
+                    <h3>45k</h3>
+                    <span>Requests</span>
+                </div>
+                <div class="stat-box">
+                    <h3>O(1)</h3>
+                    <span>Complexity</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

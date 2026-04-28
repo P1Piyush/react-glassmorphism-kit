@@ -1,26 +1,18 @@
-# 🧊 React Glassmorphism Kit
+# 🎨 React Glassmorphism Kit
 
-<p align="center">
-  <img src="https://img.shields.io/badge/React-18-blue.svg">
-  <img src="https://img.shields.io/badge/Design-Glassmorphism-teal.svg">
-</p>
+An ultra-premium, zero-dependency collection of Glassmorphic UI components. This kit provides reusable cards, buttons, inputs, and modals utilizing advanced CSS backdrop-filters, subtle gradients, and floating orb animations to deliver a modern, Apple-esque aesthetic.
 
-A highly optimized, zero-dependency collection of reusable React components designed with modern Glassmorphic aesthetics. 
+## Features
+- **Pure CSS Glassmorphism**: No heavy Tailwind dependencies, highly portable CSS.
+- **Dynamic Backdrop Blur**: Optimized for performance with `-webkit-backdrop-filter`.
+- **Pre-built Components**: `GlassCard`, `GlassButton`, `GlassInput`, and `GlassStats`.
+- **Dark Mode Native**: Engineered with deep space and vibrant neon gradients (slate, cyan, ruby).
 
-## 🚀 Features
-- **Zero External CSS Dependencies**: Uses optimized inline styles with hardware-accelerated `backdrop-filter`.
-- **Responsive by Default**: Flexbox and Grid primitives baked in.
-- **TypeScript Support**: Full interface typings for props.
+## Quickstart Demonstration
 
-## 📦 Usage
-```tsx
-import { GlassCard } from 'react-glassmorphism-kit';
+A full showcase of the components is available in the standalone `demo.html` file.
 
-export default function App() {
-  return (
-    <GlassCard>
-      <h2>Hello Glassmorphism!</h2>
-    </GlassCard>
-  )
-}
-```
+To experience the UI immediately:
+1. Open the repository locally.
+2. Double-click `demo.html` to open it in your browser.
+3. No build steps or `npm install` required to view the core aesthetic.
